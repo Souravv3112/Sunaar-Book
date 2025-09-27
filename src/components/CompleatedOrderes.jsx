@@ -8,6 +8,7 @@ const Container = styled(Box)`
   box-shadow: blue;
   border: 1px solid #d1d1d1;
   border-radius: 5px;
+  overflow: hidden; /* Ensure zoom doesn't cause layout issues */
 `;
 
 const CompleatedOrderes = () => {
@@ -15,6 +16,7 @@ const CompleatedOrderes = () => {
     <Container
       sx={{
         boxShadow: "0px 0px 10px 0px #d1d1d1",
+        position: "relative", /* Better positioning for zoom transforms */
       }}
     >
       <OrderTable active={false} />

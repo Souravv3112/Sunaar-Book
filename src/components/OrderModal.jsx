@@ -54,6 +54,7 @@ function OrderModal({ modalOpen, order, handleCloseModal, setOrder }) {
     setImageModalOpen(false);
     setSelectedImage(null);
   };
+
   return (
     <>
       <Modal
@@ -101,6 +102,19 @@ function OrderModal({ modalOpen, order, handleCloseModal, setOrder }) {
                         </TableCell>
                         <TableCell sx={{ border: "1px solid #ddd" }}>
                           {order.product}
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell
+                          align="center"
+                          sx={{ border: "1px solid #ddd" }}
+                        >
+                          <Typography component="div" gutterBottom>
+                            Karigar
+                          </Typography>
+                        </TableCell>
+                        <TableCell sx={{ border: "1px solid #ddd" }}>
+                          {order?.karigar?.name || "-"}
                         </TableCell>
                       </TableRow>
                       <TableRow>
@@ -181,8 +195,8 @@ function OrderModal({ modalOpen, order, handleCloseModal, setOrder }) {
                           {order.status === "active"
                             ? "Active"
                             : order.status === "complete"
-                            ? "Completed"
-                            : "Received"}
+                              ? "Completed"
+                              : "Received"}
                         </TableCell>
                       </TableRow>
                     </Table>
