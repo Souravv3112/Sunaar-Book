@@ -537,7 +537,7 @@ const StyledTableRow = styled(TableRow)(({ theme, status, shouldHighlight }) => 
                           maxHeight: "120px",
                         }}
                       >
-                        {order?.order_images?.map((image, idx) => (
+                        {order?.images?.map((image, idx) => (
                           <Box
                             key={idx}
                             sx={{
