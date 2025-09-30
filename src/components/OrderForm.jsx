@@ -248,8 +248,10 @@ const OrderForm = ({ open, setOpen, order, setOrder, handleCloseModal }) => {
             </Grid>
             <Grid item xs={12} md={6}>
               <FormControl fullWidth margin="normal" required>
-                <InputLabel>Karat</InputLabel>
+                <InputLabel id="karat-label">Karat</InputLabel>
                 <Select
+                  labelId="vendor-label"
+                  label="Vendor"
                   name="karat"
                   value={orderData.karat}
                   onChange={handleChange}
@@ -281,8 +283,10 @@ const OrderForm = ({ open, setOpen, order, setOrder, handleCloseModal }) => {
             {order && (
               <Grid item xs={12} md={6}>
                 <FormControl fullWidth margin="normal" required>
-                  <InputLabel>Karigar</InputLabel>
+                  <InputLabel id="vendor-label">Vendor</InputLabel>
                   <Select
+                    labelId="vendor-label"
+                    label="Vendor"
                     name="karigar_id"
                     value={orderData.karigar_id || ""}
                     onChange={handleChange}

@@ -110,7 +110,7 @@ function OrderModal({ modalOpen, order, handleCloseModal, setOrder }) {
                           sx={{ border: "1px solid #ddd" }}
                         >
                           <Typography component="div" gutterBottom>
-                            Karigar
+                            Vendor
                           </Typography>
                         </TableCell>
                         <TableCell sx={{ border: "1px solid #ddd" }}>

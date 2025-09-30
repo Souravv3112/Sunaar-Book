@@ -20,7 +20,7 @@ import { OrderContext, KarigarContext } from "../context";
 import { formatDate, getBackgroundColor } from "../utils";
 import ImageDialog from "./ImageDialog";
 import ConfirmDialog from "./ConfirmDialog";
-import { Search as SearchIcon, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+import { Search as SearchIcon, Eye, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   // padding: theme.spacing(3),
@@ -28,6 +28,10 @@ const StyledBox = styled(Box)(({ theme }) => ({
   paddingRight: "24px",
   paddingBottom: "24px",
   paddingTop: "5px",
+  [theme.breakpoints.down("md")]: {
+    paddingLeft: "5px",
+    paddingRight: "5px",
+  },
 }));
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -37,7 +41,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 }));
 
 const StyledTableContainer = styled(TableContainer)({
-  maxHeight: "calc(100vh - 200px)",
+  // maxHeight: "calc(100vh - 200px)",
   overflow: "auto",
 });
 
@@ -426,7 +430,7 @@ const StyledTableRow = styled(TableRow)(({ theme, status, shouldHighlight }) => 
               <TextField
                 variant="outlined"
                 size="small"
-                placeholder="Search by Product/Karat/Description/Karigar"
+                placeholder="Search by Product/Karat/Description/Vendor"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 fullWidth
@@ -446,7 +450,7 @@ const StyledTableRow = styled(TableRow)(({ theme, status, shouldHighlight }) => 
         sx={{
           transform: `scale(${zoomLevel})`,
           transformOrigin: "top left",
-          transition: isDragging ? "none" : "transform 0.2s ease-in-out",
+          transition: isDragging ? "none" : "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           width: `${100 / zoomLevel}%`, // Adjust container width to prevent overflow
           touchAction: "none", // Prevent default touch actions
           cursor: isDragging ? "grabbing" : "default",
@@ -469,7 +473,7 @@ const StyledTableRow = styled(TableRow)(({ theme, status, shouldHighlight }) => 
                   <StyledHeaderCell>Description</StyledHeaderCell>
                   <StyledHeaderCell>Placed Date</StyledHeaderCell>
                   <StyledHeaderCell>Delivery Date</StyledHeaderCell>
-                  <StyledHeaderCell>Karigar</StyledHeaderCell>
+                  <StyledHeaderCell>Vendor</StyledHeaderCell>
                   <StyledHeaderCell>Status</StyledHeaderCell>
                 </TableRow>
               </TableHead>
@@ -489,7 +493,11 @@ const StyledTableRow = styled(TableRow)(({ theme, status, shouldHighlight }) => 
                         color: (order.status === "complete" || shouldHighlightOrder(order)) && "#FFFFFF",
                       }}
                     >
-                      {order.order_id}
+                      <Tooltip title={`View Order #${order.order_id}`}>
+                        <IconButton size="small" style={{ color: "#FBBF24" }}>
+                          <Eye size={18} />
+                        </IconButton>
+                      </Tooltip>
                     </StyledTableCell>
                     <StyledTableCell
                       sx={{

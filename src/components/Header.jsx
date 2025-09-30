@@ -118,7 +118,7 @@ export default function Header() {
     },
     {
       key: 'karigars',
-      label: 'Karigars',
+      label: 'Vendors',
       icon: Users,
       onClick: handleOpenKarigarModal,
       active: false

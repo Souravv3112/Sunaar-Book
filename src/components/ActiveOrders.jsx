@@ -6,6 +6,9 @@ const Container = styled(Box)`
   box-shadow: blue;
   border: 1px solid #d1d1d1;
   border-radius: 5px;
+  @media (max-width: 900px) {
+    margin: 5px 5px 0 5px;
+  }
 `;
 
 

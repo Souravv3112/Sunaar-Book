@@ -96,7 +96,7 @@ const KarigarForm = ({ openKarigarForm, handleCloseKarigarForm, karigar }) => {
             borderBottom: "2px solid #d1d1d1",
           }}
         >
-          {karigar ? "Edit Karigar" : "Add New Karigar"}
+          {karigar ? "Edit Vendor" : "Add New Vendor"}
         </Typography>
         <form>
           <TextField
@@ -136,7 +136,7 @@ const KarigarForm = ({ openKarigarForm, handleCloseKarigarForm, karigar }) => {
               sx={{ mt: 2 }}
               disabled={!isValid}
             >
-              {karigar ? "Update Karigar" : "Add Karigar"}
+              {karigar ? "Update Vendor" : "Add Vendor"}
             </Button>
           </Box>
         </form>

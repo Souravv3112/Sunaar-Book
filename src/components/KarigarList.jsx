@@ -94,7 +94,7 @@ const KarigarList = ({ openKarigarModal, handleCloseKarigarModal }) => {
               borderBottom: "2px solid #d1d1d1",
             }}
           >
-            KARIGAR LIST
+            VENDOR LIST
           </Typography>
           {isAdmin && (
             <Button
@@ -102,7 +102,7 @@ const KarigarList = ({ openKarigarModal, handleCloseKarigarModal }) => {
               color="primary"
               onClick={toggleAddKarigarForm}
             >
-              Add Karigar
+              Add Vendor
             </Button>
           )}
           <Grid
