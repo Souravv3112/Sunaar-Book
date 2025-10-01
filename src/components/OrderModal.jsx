@@ -205,19 +205,19 @@ function OrderModal({ modalOpen, order, handleCloseModal, setOrder }) {
                 <Grid item xs={12} md={6}>
                   <Box sx={{ textAlign: "center" }}>
                     <Typography variant="h6">Images</Typography>
-                    {order.order_images?.length > 0 ? (
+                    {order.images?.length > 0 ? (
                       <Grid
                         container
                         spacing={2}
                         justifyContent="center"
                         alignItems="center"
                       >
-                        {order.order_images.map((image, index) => (
+                        {order.images.map((image, index) => (
                           <Grid item key={index} xs={4} md={6}>
                             <img
                               onClick={() => handleImageClick(image.imageUrl)}
                               src={image.imageUrl}
-                              alt={`order_image_${index}`}
+                              alt={`image_${index}`}
                               style={{
                                 width: "100%",
                                 height: "auto",
