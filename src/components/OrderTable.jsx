@@ -20,7 +20,8 @@ import { OrderContext, KarigarContext } from "../context";
 import { formatDate, getBackgroundColor } from "../utils";
 import ImageDialog from "./ImageDialog";
 import ConfirmDialog from "./ConfirmDialog";
-import { Search as SearchIcon, Eye, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+import { Search as SearchIcon, Eye, ZoomIn, ZoomOut, RotateCcw, archiveRestore, ArchiveRestore } from "lucide-react";
+import { CheckSquare } from 'lucide-react';
 
 const StyledBox = styled(Box)(({ theme }) => ({
   // padding: theme.spacing(3),
@@ -73,7 +74,10 @@ const StyledTableRow = styled(TableRow)(({ theme, status, shouldHighlight }) => 
     : status === "complete"
       ? "#FFFFFF"
       : "inherit",
-})); const OrderTable = ({ active }) => {
+}));
+
+const OrderTable = ({ active }) => {
+
   const [currentOrders, setCurrentOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -153,8 +157,13 @@ const StyledTableRow = styled(TableRow)(({ theme, status, shouldHighlight }) => 
   };
 
   const handleOpenConfirmReceive = (order) => {
-    setSelectedOrder(order);
     setOpenConfirmReceive(true);
+    setSelectedOrder(order);
+  };
+
+  const handleActivateOrder = (order) => {
+    setOpenConfirm(true);
+    setSelectedOrder(order);
   };
 
   const handleCloseOpenConfirm = () => {
@@ -613,44 +622,60 @@ const StyledTableRow = styled(TableRow)(({ theme, status, shouldHighlight }) => 
                         backgroundColor: getCellBackgroundColor(order, index),
                       }}
                     >
-                      {/* <Button
-                      sx={{
-                        display: "block",
-                        width: "100%",
-                        marginBottom: "16px",
-                        backgroundColor:
-                          order.status === "complete" && "#FFFFFF",
-                        "&:hover": {
-                          backgroundColor: "#FFFFFF",
-                        },
-                      }}
-                      variant="outlined"
-                      onClick={() => handleOpenStatusChange(order)}
-                    >
-                      {order.status === "complete" || order.status === "receive"
-                        ? "Mark as Active"
-                        : "Mark as Complete"}
-                    </Button> */}
+                      {
+                        order?.status == "receive" && (
+                          <Tooltip title="Add to Orders" >
+                            <IconButton
+                              onClick={() => handleActivateOrder(order)}
+                              style={{ color: "#FBBF24" }}
+
+                            >
+                              <ArchiveRestore size={25} />
+                            </IconButton>
+                          </Tooltip>
+                          // <Button
+                          //   sx={{
+                          //     // display: "block",
+                          //     // width: "100%",
+
+                          //   }}
+                          //   variant="outlined"
+                          //   onClick={() => handleActivateOrder(order)}
+                          // >
+                          //   <ArchiveRestore size={30} />
+                          // </Button>
+                        )
+                      }
+
                       {order.status !== "receive" && (
-                        <Button
-                          variant="outlined"
-                          color="success"
-                          onClick={() => handleOpenConfirmReceive(order)}
-                          sx={{
-                            display: "block",
-                            width: "100%",
-                            borderColor: "green",
-                            mr: 1,
-                            cursor: "pointer",
-                            "&:hover": {
-                              backgroundColor: "green",
-                              borderColor: "green",
-                              color: "white",
-                            },
-                          }}
-                        >
-                          Complete
-                        </Button>
+                        // <Button
+                        //   variant="outlined"
+                        //   color="success"
+                        //   onClick={() => handleOpenConfirmReceive(order)}
+                        //   sx={{
+                        //     display: "block",
+                        //     width: "100%",
+                        //     borderColor: "green",
+                        //     mr: 1,
+                        //     cursor: "pointer",
+                        //     "&:hover": {
+                        //       backgroundColor: "green",
+                        //       borderColor: "green",
+                        //       color: "white",
+                        //     },
+                        //   }}
+                        // >
+                        //   Complete
+                        // </Button>
+
+                        <Tooltip title="Mark as Complete">
+                          <IconButton
+                            onClick={() => handleOpenConfirmReceive(order)}
+                            style={{ color: "green" }}
+                          >
+                            <CheckSquare />
+                          </IconButton>
+                        </Tooltip>
                       )}
                     </StyledTableCell>
                   </StyledTableRow>
