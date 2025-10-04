@@ -50,12 +50,8 @@ const OrderForm = ({ open, setOpen, order, setOrder, handleCloseModal }) => {
 
   useEffect(() => {
     if (order) {
-<<<<<<< HEAD
       const imageUrls = order?.images?.map((image) => image?.imageUrl);
       // Check if the current karat or product is custom (not predefined)
-=======
-      const imageUrls = order?.order_images?.map((image) => image?.imageUrl);
->>>>>>> b570364 (fix: Correct title spelling in index.html and enhance OrderForm component with improved image handling and UI elements)
       const isCustomKarat = !["18K", "20K", "22K"].includes(order?.karat);
       const isCustomProduct = !products.includes(order?.product);
 
